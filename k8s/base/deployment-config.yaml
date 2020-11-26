@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: DeploymentConfig
 metadata:
-  name: basic-go-nov-2020-960028
+  name: basic-go-nov-2020-966106
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: basic-go-nov-2020-960028
+        app: basic-go-nov-2020-966106
     spec:
       containers:
-      - name: basic-go-nov-2020-960028
+      - name: basic-go-nov-2020-966106
         ports:
           - name: api
             containerPort: 8080

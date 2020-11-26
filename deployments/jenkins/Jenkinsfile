@@ -5,7 +5,7 @@ def GIT_CREDENTIALS_ID = "gituser"
 def JFROG_CREDENTIALS_ID = "artifactoryuser"
 def DOCKER_REPO = "academy-docker"
 def APP_MODULE = "basic-go-nov-2020"
-def SOURCE_BRANCH = env.gitlabBranch ?: '965530-CICD' // change to {EMPLOYEE_ID}-CICD
+def SOURCE_BRANCH = env.gitlabBranch ?: '966106-CICD' // change to {EMPLOYEE_ID}-CICD
 
 def params = [
         containers: [

@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Route
 metadata:
-  name: basic-go-nov-2020-route-960028
+  name: basic-go-nov-2020-route-966106
 spec:
-  host: basic-go-nov-2020-academy-960028.apps.openshift-test.kbankpocnet.com.172.30.183.37.nip.io
+  host: basic-go-nov-2020-academy-966106.apps.openshift-test.kbankpocnet.com.172.30.183.37.nip.io
   port:
     targetPort: api
   tls:
     termination: edge
   to:
     kind: Service
-    name: basic-go-nov-2020-960028
+    name: basic-go-nov-2020-966106
     weight: 100
   wildcardPolicy: None
