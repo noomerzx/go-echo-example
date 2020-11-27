@@ -1,11 +1,12 @@
 FROM docker.artifactory.kasikornbank.com:8443/golang:1.15.3 as builder
 
 #PREPARED project
+RUN mkdir /build
+WORKDIR /build
 COPY main.go .
 COPY internal .
 COPY go.mod .
 COPY config .
-RUN unset GOPATH
 RUN go mod download
 
 #RUN go build -o /app main.go
