@@ -3,8 +3,9 @@ module go-api
 go 1.13
 
 require (
-	github.com/brianvoe/gofakeit/v5 v5.10.1
+	github.com/corpix/uarand v0.1.1 // indirect
 	github.com/dustin/go-humanize v1.0.0
+	github.com/icrowley/fake v0.0.0-20180203215853-4178557ae428
 	github.com/labstack/echo v3.3.10+incompatible
 	github.com/labstack/gommon v0.3.0 // indirect
 	github.com/pelletier/go-toml v1.7.0 // indirect

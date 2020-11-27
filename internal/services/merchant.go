@@ -6,7 +6,7 @@ import (
 	"go-api/internal/repositories"
 	"go-api/internal/utils"
 
-	"github.com/brianvoe/gofakeit/v5"
+	"github.com/icrowley/fake"
 )
 
 // MerchantService interface
@@ -35,7 +35,7 @@ func (s MerchantServ) CreateMerchant(name string, bankAccount string) (models.Me
 	merchant := models.Merchant{
 		Name:         name,
 		BangkAccount: bankAccount,
-		Username:     gofakeit.Email(),
+		Username:     fake.EmailAddress(),
 		Password:     utils.GeneratePassword(),
 	}
 	return s.Repo.CreateMerchant(merchant)
