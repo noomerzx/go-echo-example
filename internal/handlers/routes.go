@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"go-api/internal/app"
+	"go-api/internal/middlewares"
 	"go-api/internal/repositories"
 	"go-api/internal/services"
 	"net/http"
@@ -29,7 +30,7 @@ func NewRouter(e *echo.Echo, c *app.Config) error {
 			HTTPMethod:     http.MethodGet,
 			Endpoint:       "/merchant/information/:id",
 			HandlerFunc:    merchantHandler.GetMerchantByID,
-			MiddlewareFunc: []echo.MiddlewareFunc{},
+			MiddlewareFunc: []echo.MiddlewareFunc{middlewares.RequestHandlerMiddleware(c)},
 		},
 		{
 			HTTPMethod:     http.MethodPost,
@@ -41,25 +42,25 @@ func NewRouter(e *echo.Echo, c *app.Config) error {
 			HTTPMethod:     http.MethodPost,
 			Endpoint:       "/merchant/update",
 			HandlerFunc:    merchantHandler.Update,
-			MiddlewareFunc: []echo.MiddlewareFunc{},
+			MiddlewareFunc: []echo.MiddlewareFunc{middlewares.RequestHandlerMiddleware(c)},
 		},
 		{
 			HTTPMethod:     http.MethodPost,
 			Endpoint:       "/merchant/:id/product",
 			HandlerFunc:    merchantHandler.CreateProduct,
-			MiddlewareFunc: []echo.MiddlewareFunc{},
+			MiddlewareFunc: []echo.MiddlewareFunc{middlewares.RequestHandlerMiddleware(c)},
 		},
 		{
 			HTTPMethod:     http.MethodGet,
 			Endpoint:       "/merchant/:id/products",
 			HandlerFunc:    merchantHandler.GetProducts,
-			MiddlewareFunc: []echo.MiddlewareFunc{},
+			MiddlewareFunc: []echo.MiddlewareFunc{middlewares.RequestHandlerMiddleware(c)},
 		},
 		{
 			HTTPMethod:     http.MethodGet,
 			Endpoint:       "/merchant/:id/report",
 			HandlerFunc:    merchantHandler.GenReport,
-			MiddlewareFunc: []echo.MiddlewareFunc{},
+			MiddlewareFunc: []echo.MiddlewareFunc{middlewares.RequestHandlerMiddleware(c)},
 		},
 	}
 

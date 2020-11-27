@@ -19,6 +19,8 @@ func JSONResponse(c echo.Context, data interface{}, err error) error {
 			code, message = "409", "Some data already exist."
 		} else if err.Error() == "404" {
 			code, message = "404", "Data not found."
+		} else if err.Error() == "401" {
+			code, message = "401", "User Unauthorized."
 		}
 	}
 	res := models.Response{
