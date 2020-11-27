@@ -4,10 +4,10 @@ FROM docker.artifactory.kasikornbank.com:8443/golang:1.15.3 as builder
 WORKDIR /build
 COPY go.mod .
 COPY go.sum .
+RUN go mod download
 COPY main.go .
 COPY internal .
 COPY config .
-RUN go mod download
 
 #RUN go build -o /app main.go
 ENV GOCACHE=/tmp/.cache

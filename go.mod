@@ -4,6 +4,7 @@ go 1.13
 
 require (
 	github.com/Pallinder/go-randomdata v1.2.0
+	github.com/brianvoe/gofakeit/v5 v5.10.1
 	github.com/dustin/go-humanize v1.0.0
 	github.com/labstack/echo v3.3.10+incompatible
 	github.com/labstack/gommon v0.3.0 // indirect
