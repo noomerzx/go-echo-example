@@ -5,7 +5,7 @@ COPY main.go .
 COPY internal .
 COPY go.mod .
 COPY config .
-RUN go mod download
+# RUN go mod download
 
 #RUN go build -o /app main.go
 ENV GOCACHE=/tmp/.cache
