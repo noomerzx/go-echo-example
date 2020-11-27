@@ -1,26 +1,28 @@
 package main
 
 import (
+	"flag"
 	"fmt"
-	"net/http"
+	"go-api/internal/app"
+	"go-api/internal/handlers"
+	"go-api/internal/middlewares"
+
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 )
 
 func main() {
-	fmt.Println("Starting server...")
-	http.HandleFunc("/", HelloServer)
-	if err := http.ListenAndServe(":8080", nil); err != nil {
-		panic(err)
+	env := flag.String("env", "dev", "environment")
+	flag.Parse()
+	c := app.NewConfig(*env)
+	if err := c.Init(); err != nil {
+		fmt.Println(err)
 	}
-	http.HandleFunc("/health_check", HealthCheck)
-}
-
-func HelloServer(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("received request!")
-	if _, err := fmt.Fprintf(w, "Hello, %s!", r.URL.Path[1:]); err != nil {
-		panic(err)
+	e := echo.New()
+	if err := handlers.NewRouter(e, c); err != nil {
+		fmt.Println("New Router Failed.")
 	}
-}
-
-func HealthCheck(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
+	e.Use(middleware.Logger())
+	e.Use(middlewares.RequestMiddleware)
+	e.Logger.Fatal(e.Start(":1323"))
 }
